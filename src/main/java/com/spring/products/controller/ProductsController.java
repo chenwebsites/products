@@ -32,7 +32,7 @@ public class ProductsController {
 	@GetMapping("/get-{brand}")
 	public List<ProductItem> getBrandList(@PathVariable String brand){
 		
-		return repository.getProductByBrand(brand);
+		return repository.getProductByBrandIgnoreCaseContaining(brand);
 	}
 	
 }
