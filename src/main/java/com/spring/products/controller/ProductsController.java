@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.products.model.ProductItem;
@@ -29,9 +30,15 @@ public class ProductsController {
 		return repository.save(product);
 	}
 	
-	@GetMapping("/get-{brand}")
-	public List<ProductItem> getBrandList(@PathVariable String brand){
-		
+	@GetMapping("/getById={id}")
+	@ResponseBody
+	public ProductItem getById(@PathVariable String id) {
+		return repository.getById(id);
+	}
+	
+	@GetMapping("/getByBrand={brand}")
+	@ResponseBody
+	public List<ProductItem> getByBrand(@PathVariable String brand){
 		return repository.getProductByBrandIgnoreCaseContaining(brand);
 	}
 	

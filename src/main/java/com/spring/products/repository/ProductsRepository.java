@@ -9,4 +9,5 @@ import com.spring.products.model.ProductItem;
 public interface ProductsRepository extends CrudRepository<ProductItem, Long> {
 
 	List<ProductItem> getProductByBrandIgnoreCaseContaining(String brand);
+	ProductItem getById(String id);
 }
